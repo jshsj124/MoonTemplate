@@ -1,0 +1,7 @@
+import {
+  "oilleelssq-wq/moontemplate" @moontemplate,
+}
+
+options(
+  "is-main": true,
+)
