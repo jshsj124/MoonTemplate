@@ -6,12 +6,14 @@ pub(all) enum Token {
   Text(String)
   /// Variable interpolation: {{ name }}
   Var(String)
-  /// Block open: {{#if condition}}
+  /// Block open: {{#if condition}} or {{#unless condition}}
   Open(String, String)
-  /// Block close: {{/if}}
+  /// Block close: {{/if}} or {{/unless}} or {{/each}}
   Close(String)
   /// Raw/unescaped interpolation: {{{ html }}}
   Unescaped(String)
+  /// Comment: {{!-- text --}}
+  Comment(String)
 }
 
 /// An AST node produced by the parser.
@@ -22,14 +24,19 @@ pub(all) enum Node {
   Var(String)
   /// Unescaped variable: {{{ html }}}
   Unescaped(String)
-  /// Conditional block
+  /// Conditional block: {{#if condition}}...{{/if}}
   If(String, Array[Node])
-  /// Conditional block with else
+  /// Conditional block with else: {{#if condition}}...{{else}}...{{/if}}
   IfElse(String, Array[Node], Array[Node])
-  /// Loop block
+  /// Negated conditional: {{#unless condition}}...{{/unless}}
+  Unless(String, Array[Node])
+  /// Negated conditional with else
+  UnlessElse(String, Array[Node], Array[Node])
+  /// Loop block: {{#each items}}...{{/each}}
   Each(String, String, Array[Node])
   /// Root node
   Root(Array[Node])
 }
 
-/// Template context is Map[String, String]
+/// Template context is an array of (key, value) pairs.
+/// Use `[("name", "value")]` to construct.

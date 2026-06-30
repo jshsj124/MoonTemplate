@@ -14,6 +14,29 @@ pub fn tokenize(input : String) -> Array[@types.Token] {
         buf = ""
       }
       pos = pos + 2
+
+      // Check for comment: {{! or {{!--
+      let is_comment = pos < len && input[pos] == '!'
+      if is_comment {
+        pos = pos + 1
+        if pos < len && input[pos] == '-' && pos + 1 < len && input[pos + 1] == '-' {
+          pos = pos + 2
+        }
+        let comment_start = pos
+        let mut comment_end = pos
+        while comment_end < len {
+          if input[comment_end] == '}' && comment_end + 1 < len && input[comment_end + 1] == '}' {
+            break
+          }
+          comment_end = comment_end + 1
+        }
+        let comment_text = input.substring(start=comment_start, end=comment_end)
+        tokens.push(@types.Token::Comment(trim_both(comment_text)))
+        pos = comment_end
+        pos = skip_closing_braces(input, comment_end, len)
+        continue
+      }
+
       let is_unescaped = pos < len && input[pos] == '{'
       if is_unescaped {
         pos = pos + 1
@@ -80,6 +103,20 @@ pub fn tokenize(input : String) -> Array[@types.Token] {
     tokens.push(@types.Token::Text(buf))
   }
   tokens
+}
+
+fn skip_closing_braces(input : String, pos : Int, len : Int) -> Int {
+  let mut result = pos
+  while result < len && (input[result] == ' ' || input[result] == '\t') {
+    result = result + 1
+  }
+  if result < len && input[result] == '}' {
+    result = result + 1
+    if result < len && input[result] == '}' {
+      result = result + 1
+    }
+  }
+  result
 }
 
 fn find_space(s : String) -> Int {

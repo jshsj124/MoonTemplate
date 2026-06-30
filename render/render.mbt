@@ -21,6 +21,20 @@ pub fn render(node : @types.Node, ctx : Array[(String, String)]) -> String {
         render_nodes(else_body, ctx)
       }
     }
+    @types.Node::Unless(condition, body) => {
+      if lookup(condition, ctx) == "" {
+        render_nodes(body, ctx)
+      } else {
+        ""
+      }
+    }
+    @types.Node::UnlessElse(condition, body, else_body) => {
+      if lookup(condition, ctx) == "" {
+        render_nodes(body, ctx)
+      } else {
+        render_nodes(else_body, ctx)
+      }
+    }
     @types.Node::Each(collection, item_name, body) => {
       let val = lookup(collection, ctx)
       if val != "" {

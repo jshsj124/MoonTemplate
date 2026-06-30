@@ -19,6 +19,10 @@ fn parse_until(state : ParseState, end_tag : String) -> Array[@types.Node] {
   while state.pos < state.len {
     let token = state.tokens[state.pos]
     match token {
+      @types.Token::Comment(_) => {
+        // Comments produce no output
+        state.pos = state.pos + 1
+      }
       @types.Token::Close(name) => {
         if name == end_tag {
           state.pos = state.pos + 1
@@ -27,8 +31,8 @@ fn parse_until(state : ParseState, end_tag : String) -> Array[@types.Node] {
         state.pos = state.pos + 1
       }
       @types.Token::Open("else", "") => {
-        if end_tag == "if" {
-          // Don't consume - let the if handler deal with it
+        if end_tag == "if" || end_tag == "unless" {
+          // Don't consume - let the handler deal with it
           break
         }
         state.pos = state.pos + 1
@@ -64,12 +68,29 @@ fn parse_until(state : ParseState, end_tag : String) -> Array[@types.Node] {
           } else {
             nodes.push(@types.Node::If(arg, body))
           }
+        } else if cmd == "unless" {
+          let body = parse_until(state, "unless")
+          let mut else_body = Array::new(capacity=0)
+          if state.pos < state.len {
+            match state.tokens[state.pos] {
+              @types.Token::Open("else", "") => {
+                state.pos = state.pos + 1
+                else_body = parse_until(state, "unless")
+              }
+              _ => ()
+            }
+          }
+          if else_body.length() > 0 {
+            nodes.push(@types.Node::UnlessElse(arg, body, else_body))
+          } else {
+            nodes.push(@types.Node::Unless(arg, body))
+          }
         } else if cmd == "each" {
           let body = parse_until(state, "each")
           nodes.push(@types.Node::Each(arg, "this", body))
         } else {
           // Unknown block, consume until matching close
-          let _ = parse_until(state, cmd)
+          parse_until(state, cmd) |> ignore
         }
       }
     }
