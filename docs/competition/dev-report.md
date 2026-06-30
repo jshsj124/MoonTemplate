@@ -93,13 +93,6 @@ Template String
 - Git 提交：13 次
 - 依赖：零外部依赖
 
-## 与 MoonMarkdown 的协同
-
-MoonTemplate 可与 MoonMarkdown 组合使用：
-- MoonMarkdown 将 Markdown 转为 HTML
-- MoonTemplate 将 HTML 模板与数据结合
-- 两者共同形成 MoonBit 生态的文档工具链
-
 ## 后续计划
 
 - 增加更多内置 Helper（unless、with、partial）
