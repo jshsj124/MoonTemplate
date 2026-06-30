@@ -38,3 +38,8 @@ Context is an `Array[(String, String)]` of variable name-value pairs.
 ## License
 
 MIT
+
+## New in 0.2.0
+
+- **Comments**: `{{! inline }}` and `{{!-- block --}}`
+- **Unless**: `{{#unless hide}}...{{/unless}}` with `{{else}}` support
