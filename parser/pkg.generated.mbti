@@ -1,0 +1,19 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "jshsj124/moontemplate/parser"
+
+import {
+  "jshsj124/moontemplate/types",
+}
+
+// Values
+pub fn parse(Array[@types.Token]) -> @types.Node
+
+// Errors
+
+// Types and methods
+type ParseState
+
+// Type aliases
+
+// Traits
+

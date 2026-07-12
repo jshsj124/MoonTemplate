@@ -1,5 +1,5 @@
 import {
-  "oilleelssq-wq/moontemplate" @moontemplate,
+  "oilleelssq-wq/moontemplate",
 }
 
 options(

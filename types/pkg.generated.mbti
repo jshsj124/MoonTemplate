@@ -1,0 +1,33 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "jshsj124/moontemplate/types"
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) enum Node {
+  Text(String)
+  Var(String)
+  Unescaped(String)
+  If(String, Array[Node])
+  IfElse(String, Array[Node], Array[Node])
+  Unless(String, Array[Node])
+  UnlessElse(String, Array[Node], Array[Node])
+  Each(String, String, Array[Node])
+  Root(Array[Node])
+}
+
+pub(all) enum Token {
+  Text(String)
+  Var(String)
+  Open(String, String)
+  Close(String)
+  Unescaped(String)
+  Comment(String)
+}
+
+// Type aliases
+
+// Traits
+

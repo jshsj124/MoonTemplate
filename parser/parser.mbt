@@ -1,28 +1,29 @@
+///|
 /// Parser: converts tokens into an AST.
-
-struct ParseState {
+priv struct ParseState {
   tokens : Array[@types.Token]
   len : Int
   mut pos : Int
 }
 
+///|
 /// Parse tokens into an AST.
 pub fn parse(tokens : Array[@types.Token]) -> @types.Node {
-  let state = ParseState::{ tokens: tokens, len: tokens.length(), pos: 0 }
+  let state = ParseState::{ tokens, len: tokens.length(), pos: 0 }
   let nodes = parse_until(state, "")
   @types.Node::Root(nodes)
 }
 
+///|
 /// Parse nodes until we hit a Close token with the given name, or an else Open token.
 fn parse_until(state : ParseState, end_tag : String) -> Array[@types.Node] {
   let nodes = Array::new(capacity=8)
   while state.pos < state.len {
     let token = state.tokens[state.pos]
     match token {
-      @types.Token::Comment(_) => {
+      @types.Token::Comment(_) =>
         // Comments produce no output
         state.pos = state.pos + 1
-      }
       @types.Token::Close(name) => {
         if name == end_tag {
           state.pos = state.pos + 1

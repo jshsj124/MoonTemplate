@@ -5,7 +5,7 @@ A Handlebars-style template engine for MoonBit.
 ## Installation
 
 ```bash
-moon add JshsJ/moontemplate
+moon add jshsj124/moontemplate
 ```
 
 ## Quick Start
