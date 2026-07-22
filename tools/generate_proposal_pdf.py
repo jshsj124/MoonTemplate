@@ -122,7 +122,7 @@ def build():
     pdf.small_label("项目方向", "MoonBit 基础库 / Web 开发基础设施")
     pdf.small_label("移植项目", "是 — 参考 Handlebars.js（MIT）")
     pdf.small_label("许可证", "MIT")
-    pdf.small_label("GitHub 仓库", "https://github.com/jshsj124/MoonTemplate")
+    pdf.small_label("GitHub 仓库", "https://github.com/oilleelssq-wq/moontemplate")
     pdf.small_label("GitLink 仓库", "https://gitlink.org.cn/JshsJ/moontemplate")
     pdf.ln(4)
 

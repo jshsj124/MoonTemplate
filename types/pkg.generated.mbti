@@ -1,11 +1,31 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "jshsj124/moontemplate/types"
+package "oilleelssq-wq/moontemplate/types"
 
 // Values
+pub fn context_flatten(ContextValue) -> Array[(String, ContextValue)]
+
+pub fn context_from_pairs(Array[(String, String)]) -> Array[(String, ContextValue)]
+
+pub fn context_lookup(String, Array[(String, ContextValue)]) -> String
+
+pub fn format_template_error(TemplateError) -> String
+
+pub fn template_error(String, Int, Int) -> TemplateError
 
 // Errors
 
 // Types and methods
+pub(all) enum ContextValue {
+  Str(String)
+  List(Array[ContextValue])
+  Object(Array[(String, ContextValue)])
+} derive(Eq)
+
+pub(all) struct Helper {
+  name : String
+  func : (String) -> String
+}
+
 pub(all) enum Node {
   Text(String)
   Var(String)
@@ -17,6 +37,17 @@ pub(all) enum Node {
   Each(String, String, Array[Node])
   Root(Array[Node])
 }
+
+pub(all) struct Partial {
+  name : String
+  template : String
+} derive(Eq)
+
+pub(all) struct TemplateError {
+  message : String
+  line : Int
+  column : Int
+} derive(Eq)
 
 pub(all) enum Token {
   Text(String)

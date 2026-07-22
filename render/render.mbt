@@ -108,6 +108,8 @@ fn html_escape(s : String) -> String {
       '<' => result = result + "&lt;"
       '>' => result = result + "&gt;"
       '"' => result = result + "&quot;"
+      '\'' => result = result + "&#39;"
+      '`' => result = result + "&#96;"
       _ => result = result + ch
     }
     i = i + 1

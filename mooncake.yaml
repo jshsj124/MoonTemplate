@@ -1,7 +1,7 @@
 name: moontemplate
 version: 0.1.0
 description: A Handlebars-style template engine in pure MoonBit
-repository: https://github.com/jshsj124/MoonTemplate
+repository: https://github.com/oilleelssq-wq/moontemplate
 license: MIT
 keywords:
   - template

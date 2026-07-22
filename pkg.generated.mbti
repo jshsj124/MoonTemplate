@@ -1,14 +1,22 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "jshsj124/moontemplate"
+package "oilleelssq-wq/moontemplate"
 
 import {
-  "jshsj124/moontemplate/types",
+  "oilleelssq-wq/moontemplate/types",
 }
 
 // Values
+pub fn apply_helper(String, String, Array[@types.Helper]) -> String?
+
 pub fn compile(String) -> @types.Node
 
+pub fn escape_html(String) -> String
+
+pub fn find_partial(String, Array[@types.Partial]) -> String
+
 pub fn render(@types.Node, Array[(String, String)]) -> String
+
+pub fn render_enhanced(String, Array[(String, String)], Array[@types.Partial], Array[@types.Helper]) -> String
 
 pub fn render_template(String, Array[(String, String)]) -> String
 

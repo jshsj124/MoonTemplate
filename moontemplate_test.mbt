@@ -169,6 +169,28 @@ test "ampersand escape" {
 }
 
 ///|
+test "HTML escaping covers quotes used in attributes" {
+  let payload = "' onmouseover='alert(1)`"
+  let result = @moontemplate.render_template(
+    "<button data-name='{{ name }}'>x</button>",
+    [("name", payload)],
+  )
+  assert_eq(
+    result, "<button data-name='&#39; onmouseover=&#39;alert(1)&#96;'>x</button>",
+  )
+  assert_false(result.contains("data-name=''"))
+  assert_false(result.contains("onmouseover='alert(1)"))
+}
+
+///|
+test "escape_html public function escapes all dangerous HTML characters" {
+  assert_eq(
+    @moontemplate.escape_html("&<>\"'`"),
+    "&amp;&lt;&gt;&quot;&#39;&#96;",
+  )
+}
+
+///|
 test "compile and render" {
   let ast = @moontemplate.compile("Hello {{ name }}!")
   assert_eq(@moontemplate.render(ast, [("name", "Alice")]), "Hello Alice!")

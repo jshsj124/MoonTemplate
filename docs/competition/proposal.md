@@ -5,7 +5,7 @@
 | 项目 | 内容 |
 |------|------|
 | **项目名称** | MoonTemplate：Handlebars 风格模板引擎的 MoonBit 移植 |
-| **GitHub 仓库** | https://github.com/jshsj124/MoonTemplate |
+| **GitHub 仓库** | https://github.com/oilleelssq-wq/moontemplate |
 | **GitLink 仓库** | https://gitlink.org.cn/JshsJ/moontemplate |
 | **项目方向** | MoonBit 基础库 / Web 开发基础设施 |
 | **是否为移植项目** | 是 |

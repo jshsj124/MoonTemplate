@@ -1,12 +1,14 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "jshsj124/moontemplate/render"
+package "oilleelssq-wq/moontemplate/render"
 
 import {
-  "jshsj124/moontemplate/types",
+  "oilleelssq-wq/moontemplate/types",
 }
 
 // Values
 pub fn render(@types.Node, Array[(String, String)]) -> String
+
+pub fn render_enhanced(@types.Node, Array[(String, String)], Array[@types.Partial], Array[@types.Helper]) -> String
 
 // Errors
 
