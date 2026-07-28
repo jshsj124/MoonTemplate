@@ -44,4 +44,4 @@
 
 ## 发布
 
-- [ ] `jshsj124/moontemplate` 已发布并可在 mooncakes.io 查询
+- [x] `jshsj124/moontemplate` v0.1.1 已发布并可在 mooncakes.io 查询
