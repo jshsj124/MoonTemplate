@@ -6,9 +6,9 @@ A Handlebars-style template engine for MoonBit. It supports variable interpolati
 
 | Field | Value |
 |---|---|
-| MoonBit package | `oilleelssq-wq/moontemplate` |
-| Version | `0.1.0` |
-| Repository | `https://github.com/oilleelssq-wq/moontemplate` |
+| MoonBit package | `jshsj124/moontemplate` |
+| Version | `0.1.1` |
+| Repository | `https://github.com/jshsj124/MoonTemplate` |
 | License | MIT |
 
 > The package name above matches `moon.mod`; publishing and importing must use this exact namespace. Older namespaces are not substitutes.
@@ -16,14 +16,14 @@ A Handlebars-style template engine for MoonBit. It supports variable interpolati
 ## Installation
 
 ```bash
-moon add oilleelssq-wq/moontemplate
+moon add jshsj124/moontemplate
 ```
 
 Add the package to your app's `moon.pkg`:
 
 ```moonbit
 import {
-  "oilleelssq-wq/moontemplate"
+  "jshsj124/moontemplate"
 }
 ```
 
@@ -33,7 +33,7 @@ Create `cmd/main/moon.pkg`:
 
 ```moonbit
 import {
-  "oilleelssq-wq/moontemplate"
+  "jshsj124/moontemplate"
 }
 
 pkgtype(kind: "executable")
@@ -94,12 +94,14 @@ Context is an `Array[(String, String)]` of variable name-value pairs.
 ## Development checks
 
 ```bash
-moon fmt --check
 moon check --deny-warn
-moon test
-moon build
+moon fmt --check
 moon info
+git diff --exit-code -- '**/pkg.generated.mbti'
+moon test --deny-warn
 ```
+
+MoonBit 2026-07 no longer accepts `--deny-warn` on `moon fmt` or `moon info`; the commands above are the current toolchain equivalents. CI feature-detects older toolchains and runs the strict form when available.
 
 ## License
 

@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "oilleelssq-wq/moontemplate/types"
+package "jshsj124/moontemplate/types"
 
 // Values
 pub fn context_flatten(ContextValue) -> Array[(String, ContextValue)]

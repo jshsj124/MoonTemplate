@@ -1,5 +1,5 @@
 import {
-  "oilleelssq-wq/moontemplate",
+  "jshsj124/moontemplate",
 }
 
 pkgtype(kind: "executable")

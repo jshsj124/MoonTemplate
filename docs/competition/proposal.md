@@ -5,7 +5,7 @@
 | 项目 | 内容 |
 |------|------|
 | **项目名称** | MoonTemplate：Handlebars 风格模板引擎的 MoonBit 移植 |
-| **GitHub 仓库** | https://github.com/oilleelssq-wq/moontemplate |
+| **GitHub 仓库** | https://github.com/jshsj124/MoonTemplate |
 | **GitLink 仓库** | https://gitlink.org.cn/JshsJ/moontemplate |
 | **项目方向** | MoonBit 基础库 / Web 开发基础设施 |
 | **是否为移植项目** | 是 |
@@ -22,7 +22,10 @@ MoonBit 生态中目前缺乏模板引擎，Web 开发场景中的 HTML 生成�
 - 变量插值：`{{ name }}`，自动 HTML 转义防止 XSS
 - 非转义输出：`{{{ html }}}`，用于信任的 HTML 内容
 - 条件渲染：`{{#if condition}}...{{/if}}`，支持 `{{else}}` 分支
+- 反向条件：`{{#unless condition}}...{{/unless}}`
 - 循环遍历：`{{#each items}}...{{/each}}`，支持逗号分隔的集合
+- 注释、Partial 与 Helper 扩展能力
+- 富上下文值、模板错误位置和格式化诊断
 - 编译后复用：`compile` 预编译模板，`render` 多次渲染不同上下文
 - CLI 演示工具
 - 零外部依赖，纯 MoonBit 实现
@@ -40,18 +43,18 @@ MoonBit 生态中目前缺乏模板引擎，Web 开发场景中的 HTML 生成�
 与原项目相比，本项目做了以下简化和重新设计：
 
 - 使用 MoonBit 原生类型系统和包结构组织代码；
-- 优先实现核心模板功能（变量、条件、循环），弱化 Partials、Helper 注册、自定义块等高级特性；
-- 上下文使用简洁的键值对数组而非完整对象模型；
+- 保留简洁键值对入口，同时提供富上下文值、Partial 和 Helper 扩展类型；
+- API 与 Handlebars.js 不追求一一对应，按 MoonBit 类型系统重新设计；
 - 循环中的集合以逗号分隔字符串表示，简化数据传递。
 
 ## 项目规模
 
-预计 1,200-1,500 有效 MoonBit 代码行，含完整测试套件和文档。
+当前跟踪 1,133 行 MoonBit 源码，覆盖核心实现、CLI 和测试套件；项目保持零外部运行时依赖。
 
 ## 实现进度
 
-- 已完成：Lexer（模板字符串分词）、Parser（Token 到 AST）、Renderer（AST 求值输出）、CLI Demo、15 个测试全部通过
-- 进行中：文档和申报材料完善
+- 已完成：Lexer、Parser、Renderer、CLI Demo、HTML 安全转义、unless、注释、Partial、Helper、富上下文和错误诊断
+- 质量状态：`moon check --deny-warn`、格式门禁、接口门禁和 37 个测试全部通过
 
 ## 适用场景
 

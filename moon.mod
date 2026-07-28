@@ -1,10 +1,10 @@
-name = "oilleelssq-wq/moontemplate"
+name = "jshsj124/moontemplate"
 
-version = "0.1.0"
+version = "0.1.1"
 
 readme = "README.md"
 
-repository = "https://github.com/oilleelssq-wq/moontemplate"
+repository = "https://github.com/jshsj124/MoonTemplate"
 
 license = "MIT"
 

@@ -1,8 +1,8 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "oilleelssq-wq/moontemplate/lexer"
+package "jshsj124/moontemplate/lexer"
 
 import {
-  "oilleelssq-wq/moontemplate/types",
+  "jshsj124/moontemplate/types",
 }
 
 // Values

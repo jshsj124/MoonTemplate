@@ -122,7 +122,7 @@ def build():
     pdf.small_label("项目方向", "MoonBit 基础库 / Web 开发基础设施")
     pdf.small_label("移植项目", "是 — 参考 Handlebars.js（MIT）")
     pdf.small_label("许可证", "MIT")
-    pdf.small_label("GitHub 仓库", "https://github.com/oilleelssq-wq/moontemplate")
+    pdf.small_label("GitHub 仓库", "https://github.com/jshsj124/MoonTemplate")
     pdf.small_label("GitLink 仓库", "https://gitlink.org.cn/JshsJ/moontemplate")
     pdf.ln(4)
 
@@ -180,9 +180,9 @@ def build():
     pdf.ln(12)
 
     pdf.body_text(
-        "预计 1,200–1,500 有效 MoonBit 代码行，含完整测试与文档。"
-        "当前已完成 Lexer、Parser、Renderer、CLI Demo，15 个测试全部通过。"
-        "后续计划：增加更多内置 Helper、支持嵌套上下文、发布至 mooncakes.io。"
+        "当前跟踪 1,133 行 MoonBit 源码，覆盖核心实现、CLI 与测试套件。"
+        "已完成 Lexer、Parser、Renderer、Partial、Helper、富上下文和错误诊断。"
+        "37 个测试、严格编译、格式门禁和公共接口门禁全部通过。"
     )
 
     # ── Use Cases ──

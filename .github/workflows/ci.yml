@@ -17,7 +17,22 @@ jobs:
         run: echo "$HOME/.moon/bin" >> $GITHUB_PATH
       - name: Check
         run: moon check
-      - name: Build
-        run: moon build
+      - name: Format (moon fmt --deny-warn equivalent)
+        shell: bash
+        run: |
+          if moon fmt --help | grep -q -- '--deny-warn'; then
+            moon fmt --deny-warn
+          else
+            moon fmt --check
+          fi
+      - name: Public API (moon info --deny-warn equivalent)
+        shell: bash
+        run: |
+          if moon info --help | grep -q -- '--deny-warn'; then
+            moon info --deny-warn
+          else
+            moon info
+          fi
+          git diff --exit-code -- '**/pkg.generated.mbti'
       - name: Test
         run: moon test

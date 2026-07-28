@@ -1,6 +1,6 @@
 import {
-  "oilleelssq-wq/moontemplate/types",
-  "oilleelssq-wq/moontemplate/lexer",
-  "oilleelssq-wq/moontemplate/parser",
-  "oilleelssq-wq/moontemplate/render",
+  "jshsj124/moontemplate/types",
+  "jshsj124/moontemplate/lexer",
+  "jshsj124/moontemplate/parser",
+  "jshsj124/moontemplate/render",
 }
